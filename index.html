@@ -310,6 +310,126 @@ footer::before{
   .phone{width:246px;height:480px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* ===== AJUSTES MOBILE ===== */
+@media (max-width:860px){
+  /* Topo limpo: só logo + menu, sem botão de WhatsApp duplicado */
+  .nav .nav-wa{display:none}
+  .mobile-panel .btn{display:none}
+  .nav-inner{justify-content:space-between;gap:24px;padding-left:26px;padding-right:26px}
+  .brand{margin-right:auto}
+  .brand img{height:48px}
+  .hamburger{margin-left:auto}
+}
+@media (max-width:720px){
+  /* Título principal mais pequeno e elegante */
+  .hero h1{font-size:1.85rem;line-height:1.2;letter-spacing:-.015em;margin-bottom:16px}
+  .hero p.lead{font-size:1.02rem;margin-bottom:24px}
+  .hero-text{padding:32px 0 8px}
+
+  /* Foto menor, cantos arredondados e espaço em volta */
+  .hero-img{
+    margin:22px 0 40px;padding:22px 22px 0;border-radius:28px;overflow:hidden;
+    background:linear-gradient(160deg,#e3f4f6,#b9e8ea);
+    box-shadow:0 14px 30px rgba(10,40,60,.12);
+  }
+  .hero-img img{max-width:270px;width:100%;margin:0 auto;filter:none}
+
+  /* Rodapé: logo e informações na mesma linha (lado a lado) */
+  .foot-grid{grid-template-columns:84px 1fr;column-gap:20px;row-gap:16px;align-items:center}
+  .foot-brand{grid-column:1;grid-row:1 / span 3}
+  .foot-brand img{height:64px}
+  .foot-grid .fitem{grid-column:2}
+}
+
+/* Rodapé: margem lateral para a logo não colar à borda */
+.foot{padding-left:22px;padding-right:22px}
+@media (max-width:720px){.foot{padding-left:26px;padding-right:26px}}
+
+/* Imagens atrás do texto, à direita, sempre visíveis (980px ou menos) */
+@media (max-width:980px){
+  /* Hero: foto do jovem à direita, atrás do texto */
+  .hero-grid{display:block;position:relative}
+  .hero-text{position:relative;z-index:2;max-width:58%;padding:48px 0}
+  .hero-img{
+    display:flex;position:absolute;z-index:1;right:-10px;bottom:0;top:auto;
+    width:44%;max-width:380px;margin:0;padding:0;background:none;box-shadow:none;border-radius:0;pointer-events:none;
+  }
+  .hero-img img{width:100%;max-width:none;margin:0;filter:drop-shadow(0 14px 24px rgba(7,60,80,.2))}
+
+  /* ServiLink: telemóvel à direita, atrás do texto */
+  .sl-band .sl-grid{display:block;position:relative;text-align:left}
+  .sl-text{position:relative;z-index:2;max-width:56%}
+  .sl-text p{margin-left:0;margin-right:0}
+  .sl-visual{
+    display:block;position:absolute;z-index:1;right:10px;bottom:-30px;padding:0;pointer-events:none;
+    transform:scale(.78);transform-origin:bottom right;
+  }
+  .sl-band.section{padding:56px 0 64px;overflow:hidden}
+}
+
+/* Imagens ATRÁS do texto, à direita. Ao encolher o ecrã: o texto vai cobrindo a imagem,
+   e a imagem fica um pouco menor e mais transparente (980px ou menos) */
+@media (max-width:980px){
+  /* Hero */
+  .hero-grid{display:block;position:relative;min-height:300px}
+  .hero-text{position:relative;z-index:2;max-width:58%;padding:56px 0}
+  .hero h1,.hero p.lead,.fast{text-shadow:0 0 14px rgba(255,255,255,.95),0 0 4px #fff}
+  .hero-img{
+    display:flex;position:absolute;z-index:1;right:-2%;top:0;bottom:0;
+    width:clamp(210px,46vw,400px);margin:0;padding:0;background:none;box-shadow:none;border-radius:0;
+    pointer-events:none;opacity:1;
+  }
+  .hero-img img{width:100%;height:100%;max-width:none;margin:0;filter:none;object-fit:contain;object-position:right bottom}
+
+  /* ServiLink */
+  .sl-band.section{padding:56px 0;overflow:hidden}
+  .sl-band .sl-grid{display:flex;align-items:center;position:relative;text-align:left;min-height:420px}
+  .sl-text{position:relative;z-index:2;max-width:58%}
+  .sl-text p{margin-left:0;margin-right:0}
+  .sl-text h2,.sl-text p{text-shadow:0 0 14px rgba(234,248,250,.95),0 0 4px #eaf8fa}
+  .sl-visual{
+    display:block;position:absolute;z-index:1;right:2%;top:50%;padding:0;pointer-events:none;
+    transform:translateY(-50%) scale(.78);transform-origin:center right;opacity:1;
+  }
+}
+@media (max-width:760px){
+  .hero-text{max-width:74%}
+  .hero-img{opacity:.85}
+  .sl-text{max-width:74%}
+  .sl-band .sl-grid{min-height:380px}
+  .sl-visual{transform:translateY(-50%) scale(.7);opacity:.85}
+}
+@media (max-width:620px){
+  .hero-text{max-width:100%}
+  .hero-img{opacity:.65;right:-6%}
+  .sl-text{max-width:100%}
+  .sl-band .sl-grid{min-height:340px}
+  .sl-visual{transform:translateY(-50%) scale(.62);opacity:.65;right:-4%}
+}
+@media (max-width:480px){
+  .hero-img{opacity:.5}
+  .sl-band .sl-grid{min-height:300px}
+  .sl-visual{transform:translateY(-50%) scale(.55);opacity:.5}
+}
+
+/* Mais legibilidade: a imagem esvanece-se do lado do texto e o texto fica mais forte */
+@media (max-width:980px){
+  .hero-img{
+    -webkit-mask-image:linear-gradient(to right,transparent 0%,rgba(0,0,0,.28) 32%,#000 68%);
+            mask-image:linear-gradient(to right,transparent 0%,rgba(0,0,0,.28) 32%,#000 68%);
+  }
+  .sl-visual{
+    -webkit-mask-image:linear-gradient(to right,transparent 0%,rgba(0,0,0,.3) 30%,#000 64%);
+            mask-image:linear-gradient(to right,transparent 0%,rgba(0,0,0,.3) 30%,#000 64%);
+  }
+  .hero h1,.hero p.lead,.fast,
+  .sl-text h2,.sl-text p{
+    text-shadow:0 0 3px #fff,0 0 8px #fff,0 0 16px rgba(255,255,255,.95),0 0 28px rgba(255,255,255,.8);
+  }
+  .hero p.lead,.sl-text p{color:#13233a;font-weight:600}
+  .fast{color:#0a1628}
+}  
 </style>
 </head>
 <body>
